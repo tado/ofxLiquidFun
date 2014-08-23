@@ -55,9 +55,9 @@ void ofxBox2dParticleSystem::createParticle(ofVec2f position , ofVec2f velocity)
 void ofxBox2dParticleSystem::createParticle(float posx, float posy, float velx, float vely){
     b2ParticleDef pd;
     pd.flags = flag;
-    b2Vec2 position = b2Vec2(posx/OFX_BOX2D_SCALE, posy/OFX_BOX2D_SCALE);
+    b2Vec2 position = b2Vec2(posx / OFX_BOX2D_SCALE, posy / OFX_BOX2D_SCALE);
     pd.position = position;
-    pd.velocity.Set(velx/OFX_BOX2D_SCALE, vely/OFX_BOX2D_SCALE);
+    pd.velocity.Set(velx / OFX_BOX2D_SCALE, vely / OFX_BOX2D_SCALE);
     if (lifetime > 0.0) {
         pd.lifetime = lifetime;
     }
@@ -80,4 +80,9 @@ void ofxBox2dParticleSystem::setColor(ofColor _color){
 }
 void ofxBox2dParticleSystem::setParticleFlag(b2ParticleFlag _flag){
     flag = _flag;
+}
+
+
+int ofxBox2dParticleSystem::getParticleCount(){
+    return particleSystem->GetParticleCount();
 }

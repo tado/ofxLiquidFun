@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup() {
-    ofSetVerticalSync(true);
+    // ofSetVerticalSync(true);
     ofSetFrameRate(60);
     ofBackgroundHex(0x00000);
     ofSetLogLevel(OF_LOG_NOTICE);
@@ -43,7 +43,7 @@ void ofApp::draw() {
         ofSetHexColor(0xBF2545);
         boxes[i].get()->draw();
     }
-    
+
     particles.draw();
     
     string info = "";
@@ -51,7 +51,7 @@ void ofApp::draw() {
     info += "Press [b] for blocks\n";
     info += "Mouse Drag for particles\n";
     info += "Total Bodies: "+ofToString(box2d.getBodyCount())+"\n";
-    info += "Total Particles: "+ofToString(particles.particleSystem->GetParticleCount())+"\n\n";
+    info += "Total Particles: "+ofToString(particles.getParticleCount())+"\n\n";
     info += "FPS: "+ofToString(ofGetFrameRate(), 1)+"\n";
     ofSetHexColor(0xffffff);
     ofDrawBitmapString(info, 30, 30);

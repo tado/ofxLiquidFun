@@ -30,9 +30,12 @@ public:
 
     void createParticle(ofVec2f position, ofVec2f velocity);
     void createParticle(float position_x, float position_y, float velocisty_x, float velocisty_y);
+
     void setRadius(float radius);
     void setMaxCount(int maxCount);
     void setParticleLifetime(float lifetime);
     void setColor(ofColor color);
     void setParticleFlag(b2ParticleFlag flag);
+    
+    int getParticleCount();
 };
