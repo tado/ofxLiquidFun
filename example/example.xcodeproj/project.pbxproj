@@ -536,6 +536,8 @@
 			isa = PBXGroup;
 			children = (
 				1893718F19A859CB00F8E1F4 /* ofxLiquidFun.h */,
+				43BFEF0DECE8CE4E90624E1D /* ofxBox2dParticleSystem.cpp */,
+				F00DF1D4341C18D9567688DF /* ofxBox2dParticleSystem.h */,
 				1A87B105AE081FF640774141 /* ofxBox2d.cpp */,
 				4CAE1D61C53FB3F11FBD94A5 /* ofxBox2d.h */,
 				1B13FF6ADCC7F1B311AC63F4 /* ofxBox2dBaseShape.cpp */,
@@ -547,8 +549,6 @@
 				BF85CBDEA83E69E3C0C7B0F8 /* ofxBox2dEdge.h */,
 				754B2905967F6DA1C95A0534 /* ofxBox2dJoint.cpp */,
 				B275580A0DEBB453047AC5E7 /* ofxBox2dJoint.h */,
-				43BFEF0DECE8CE4E90624E1D /* ofxBox2dParticleSystem.cpp */,
-				F00DF1D4341C18D9567688DF /* ofxBox2dParticleSystem.h */,
 				4D6E92CBBE97C46FB3832A5C /* ofxBox2dPolygon.cpp */,
 				8A9C4049B5CE4A1F6C8AF18C /* ofxBox2dPolygon.h */,
 				5E46F7EC33962A73E32EF63E /* ofxBox2dPolygonUtils.h */,

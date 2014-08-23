@@ -1,6 +1,5 @@
 //
 //  ofxBox2dParticleSystem.h
-//  example
 //
 //  Created by Atsushi Tadokoro on 8/23/14.
 //
@@ -21,9 +20,12 @@ public:
 	ofVboMesh mesh;
     float particleSize;
     float lifetime;
+    ofColor color;
+    b2ParticleFlag flag;
 	
 	ofxBox2dParticleSystem();
     void setup(b2World * b2dworld);
+    void setup(b2World * b2world, int maxCount, float lifetime, float radius, float particleSize, ofColor color);
     void draw();
 
     void createParticle(ofVec2f position, ofVec2f velocity);
@@ -31,4 +33,6 @@ public:
     void setRadius(float radius);
     void setMaxCount(int maxCount);
     void setParticleLifetime(float lifetime);
+    void setColor(ofColor color);
+    void setParticleFlag(b2ParticleFlag flag);
 };

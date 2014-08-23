@@ -13,9 +13,7 @@ void ofApp::setup() {
     
     box2d.registerGrabbing();
     box2d.createBounds();
-    
-    particles.setRadius(6.0);
-    particles.setMaxCount(10000);
+
     particles.setup(box2d.getWorld());
     
     for (int i = 0; i < 5000; i++) {
