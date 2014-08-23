@@ -9,6 +9,12 @@ openFrameworks wrapper for [LiquidFun](http://google.github.io/liquidfun/) by Go
 
 https://vimeo.com/104151359
 
+# Todo
+
+- Add PerticleGroup class (ofxBox2dParticleGroup?)
+- Separate LiquidFun class from ofxBox2d.
+- ...etc.
+
 # License
 
 The MIT License (MIT)
