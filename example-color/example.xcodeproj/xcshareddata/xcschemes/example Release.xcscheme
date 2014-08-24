@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
                BuildableName = "LiquidFunTexture.app"
-               BlueprintName = "LiquidFunTexture"
-               ReferencedContainer = "container:LiquidFunTexture.xcodeproj">
+               BlueprintName = "example"
+               ReferencedContainer = "container:example.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
             BuildableName = "LiquidFunTexture.app"
-            BlueprintName = "LiquidFunTexture"
-            ReferencedContainer = "container:LiquidFunTexture.xcodeproj">
+            BlueprintName = "example"
+            ReferencedContainer = "container:example.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -53,8 +53,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
             BuildableName = "LiquidFunTexture.app"
-            BlueprintName = "LiquidFunTexture"
-            ReferencedContainer = "container:LiquidFunTexture.xcodeproj">
+            BlueprintName = "example"
+            ReferencedContainer = "container:example.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -71,8 +71,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4B69B5A0A3A1756003C02F2"
             BuildableName = "LiquidFunTexture.app"
-            BlueprintName = "LiquidFunTexture"
-            ReferencedContainer = "container:LiquidFunTexture.xcodeproj">
+            BlueprintName = "example"
+            ReferencedContainer = "container:example.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
