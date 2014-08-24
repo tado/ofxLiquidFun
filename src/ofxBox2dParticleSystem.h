@@ -17,22 +17,25 @@ private:
 public:
     b2ParticleSystemDef particleSystemDef;
     b2ParticleSystem* particleSystem;
-	ofVboMesh mesh;
+    ofVboMesh mesh;
     float particleSize;
     float lifetime;
     ofColor color;
     b2ParticleFlag flag;
-	
-	ofxBox2dParticleSystem();
+    
+    ofxBox2dParticleSystem();
     void setup(b2World * b2dworld);
+    void setup(b2World * b2dworld, int maxCount);
     void setup(b2World * b2world, int maxCount, float lifetime, float radius, float particleSize, ofColor color);
     void draw();
-
+    
     void createParticle(ofVec2f position, ofVec2f velocity);
     void createParticle(float position_x, float position_y, float velocisty_x, float velocisty_y);
-
+    
+    void createRectParticleGroup(ofVec2f position, ofVec2f size, ofColor color);
+    void createCircleParticleGroup(ofVec2f position, float radius, ofColor color);
+    
     void setRadius(float radius);
-    void setMaxCount(int maxCount);
     void setParticleLifetime(float lifetime);
     void setColor(ofColor color);
     void setParticleFlag(b2ParticleFlag flag);

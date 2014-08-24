@@ -17,8 +17,8 @@ void ofApp::setup() {
     particles.setup(box2d.getWorld());
     
     for (int i = 0; i < 5000; i++) {
-        ofVec2f position = ofVec2f(ofRandom(ofGetWidth()),
-                                   ofRandom(ofGetHeight()-80, ofGetHeight()));
+        ofVec2f position = ofVec2f(ofRandom(100),
+                                   ofRandom(ofGetHeight()));
         ofVec2f velocity = ofVec2f(0, 0);
         particles.createParticle(position, velocity);
     }
