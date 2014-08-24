@@ -2,7 +2,6 @@
 
 //--------------------------------------------------------------
 void ofApp::setup() {
-    // ofSetVerticalSync(true);
     ofSetFrameRate(60);
     ofBackgroundHex(0x00000);
     ofSetLogLevel(OF_LOG_NOTICE);
@@ -16,7 +15,6 @@ void ofApp::setup() {
     
     particles.setup(box2d.getWorld(), 3000);
     particles.setParticleFlag(b2_elasticParticle);
-    ofColor color;
 }
 
 //--------------------------------------------------------------
