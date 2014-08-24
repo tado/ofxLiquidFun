@@ -28,6 +28,7 @@ void ofxBox2dParticleSystem::setup(b2World * _b2world, int _maxCount, float _lif
     particleSystemDef.radius = _radius / OFX_BOX2D_SCALE;
     particleSystemDef.maxCount = _maxCount;
     lifetime = _lifetime;
+    particleSize = _particleSize;
     color = _color;
     
     particleSystem = b2dworld->CreateParticleSystem(&particleSystemDef);
@@ -51,7 +52,7 @@ void ofxBox2dParticleSystem::draw(){
     ofSetColor(255);
     ofPushMatrix();
     ofScale(OFX_BOX2D_SCALE, OFX_BOX2D_SCALE);
-    glPointSize(4.0);
+    glPointSize(particleSize);
     mesh.draw();
     ofPopMatrix();
 }
