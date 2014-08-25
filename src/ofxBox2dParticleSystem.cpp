@@ -50,11 +50,19 @@ void ofxBox2dParticleSystem::draw(){
     }
     
     ofSetColor(255);
+    ofEnablePointSprites();
     ofPushMatrix();
     ofScale(OFX_BOX2D_SCALE, OFX_BOX2D_SCALE);
     glPointSize(particleSize);
-    mesh.draw();
+    if (useTexture) {
+        textureImage.getTextureReference().bind();
+        mesh.drawFaces();
+        textureImage.getTextureReference().unbind();
+    } else {
+        mesh.draw();
+    }
     ofPopMatrix();
+    ofDisablePointSprites();
 }
 
 void ofxBox2dParticleSystem::createParticle(ofVec2f position , ofVec2f velocity){
@@ -104,6 +112,13 @@ void ofxBox2dParticleSystem::createCircleParticleGroup(ofVec2f position, float r
     particleSystem->CreateParticleGroup(pgd);
 }
 
+void ofxBox2dParticleSystem::loadImage(string filename){
+    ofDisableArbTex();
+    textureImage.loadImage(filename);
+    useTexture = true;
+}
+
+//--------------------------------------------------------------
 void ofxBox2dParticleSystem::setRadius(float radius){
     particleSystemDef.radius = radius / OFX_BOX2D_SCALE;
 }

@@ -22,6 +22,8 @@ public:
     float lifetime;
     ofColor color;
     b2ParticleFlag flag;
+    ofImage textureImage;
+    bool useTexture;
     
     ofxBox2dParticleSystem();
     void setup(b2World * b2dworld);
@@ -34,6 +36,8 @@ public:
     
     void createRectParticleGroup(ofVec2f position, ofVec2f size, ofColor color);
     void createCircleParticleGroup(ofVec2f position, float radius, ofColor color);
+    
+    void loadImage(string fileName);
     
     void setRadius(float radius);
     void setParticleLifetime(float lifetime);

@@ -14,7 +14,8 @@ void ofApp::setup() {
     ofColor color;
     color.set(255);
     particles.setParticleFlag(b2_tensileParticle);
-    particles.setup(box2d.getWorld(), 20000, 60.0, 5.0, 4.0, color);
+    particles.loadImage("particle32.png");
+    particles.setup(box2d.getWorld(), 20000, 60.0, 6.0, 42.0, color);
 }
 
 //--------------------------------------------------------------
@@ -60,12 +61,10 @@ void ofApp::mouseDragged(int x, int y, int button) {
         float x = cos(ofRandom(PI * 2.0)) * radius + mouseX;
         float y = sin(ofRandom(PI * 2.0)) * radius + mouseY;
         ofVec2f position = ofVec2f(x, y);
-        
-        //ofVec2f velocity = ofVec2f(ofRandom(-10,10), ofRandom(-10, 10));
         ofVec2f velocity = ofVec2f(0, 0);
         ofColor color;
         int hue = int(ofGetFrameNum() / 4.0) % 255;
-        color.setHsb(hue, 180, 255);
+        color.setHsb(hue, 180, 200);
         particles.setColor(color);
         particles.createParticle(position, velocity);
     }
