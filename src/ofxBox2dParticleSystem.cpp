@@ -65,11 +65,11 @@ void ofxBox2dParticleSystem::draw(){
     ofDisablePointSprites();
 }
 
-void ofxBox2dParticleSystem::createParticle(ofVec2f position , ofVec2f velocity){
+int32 ofxBox2dParticleSystem::createParticle(ofVec2f position , ofVec2f velocity){
     createParticle(position.x, position.y, velocity.x, velocity.y);
 }
 
-void ofxBox2dParticleSystem::createParticle(float posx, float posy, float velx, float vely){
+int32 ofxBox2dParticleSystem::createParticle(float posx, float posy, float velx, float vely){
     b2ParticleDef pd;
     pd.flags = flag;
     b2Vec2 position = b2Vec2(posx / OFX_BOX2D_SCALE, posy / OFX_BOX2D_SCALE);
@@ -79,7 +79,17 @@ void ofxBox2dParticleSystem::createParticle(float posx, float posy, float velx, 
     if (lifetime > 0.0) {
         pd.lifetime = lifetime;
     }
-    particleSystem->CreateParticle(pd);
+    return particleSystem->CreateParticle(pd);
+}
+
+void ofxBox2dParticleSystem::applyForce( int32 particle_index, const ofVec2f& force )
+{
+  applyForce(particle_index, force.x, force.y);
+}
+
+void ofxBox2dParticleSystem::applyForce( int32 particle_index, float force_x, float force_y )
+{
+  particleSystem->ParticleApplyForce( particle_index, b2Vec2( force_x, force_y ) );
 }
 
 void ofxBox2dParticleSystem::createRectParticleGroup(ofVec2f position, ofVec2f size, ofColor color){

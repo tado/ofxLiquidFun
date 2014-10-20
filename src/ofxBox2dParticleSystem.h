@@ -31,8 +31,8 @@ public:
     void setup(b2World * b2world, int maxCount, float lifetime, float radius, float particleSize, ofColor color);
     void draw();
     
-    void createParticle(ofVec2f position, ofVec2f velocity);
-    void createParticle(float position_x, float position_y, float velocisty_x, float velocisty_y);
+    int32 createParticle(ofVec2f position, ofVec2f velocity);
+    int32 createParticle(float position_x, float position_y, float velocisty_x, float velocisty_y);
     
     void createRectParticleGroup(ofVec2f position, ofVec2f size, ofColor color);
     void createCircleParticleGroup(ofVec2f position, float radius, ofColor color);
@@ -45,4 +45,8 @@ public:
     void setParticleFlag(b2ParticleFlag flag);
     
     int getParticleCount();
+
+    void applyForce( int32 particle_index, const ofVec2f& force ); 
+    void applyForce( int32 particle_index, float force_x, float force_y ); 
+
 };
