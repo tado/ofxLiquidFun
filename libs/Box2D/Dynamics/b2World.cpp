@@ -1300,7 +1300,6 @@ void b2World::DrawDebugData()
 			}
 		}
 	}
-    
 
 	if (flags & b2Draw::e_particleBit)
 	{
