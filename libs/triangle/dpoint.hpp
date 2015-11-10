@@ -538,7 +538,7 @@ operator>>(std::istream& is,dpoint<NumType,D> &p)
 		 if(!(is >> p[i])){
 			 if(!is.eof()){
 				std::cerr << "Error Reading Point:" 
-					  << is << std::endl;
+					  << &is << std::endl;
 				exit(1);
 			 }
 		 }
