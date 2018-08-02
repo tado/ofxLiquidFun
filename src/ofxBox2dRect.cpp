@@ -41,9 +41,13 @@ void ofxBox2dRect::setup(b2World * b2dworld, float x, float y, float w, float h)
 	fixture.friction	= friction;
 	fixture.restitution = bounce;
 	
-	b2BodyDef bodyDef;
-	if(density == 0.f) bodyDef.type	= b2_staticBody;
-	else               bodyDef.type	= b2_dynamicBody;
+	//b2BodyDef bodyDef; // nm: already have one of these in our base class
+
+	if (!bodyTypeSet)
+	{
+		if (density == 0.f) bodyDef.type = b2_staticBody;
+		else bodyDef.type = b2_dynamicBody;
+	}
 	bodyDef.position.Set(x/OFX_BOX2D_SCALE, y/OFX_BOX2D_SCALE);
 	
 	
@@ -154,7 +158,7 @@ void ofxBox2dRect::draw() {
     
     ofPushMatrix();
     ofTranslate(ofxBox2dBaseShape::getPosition());
-    ofRotate(getRotation());
+    ofRotateDeg(getRotation());
     mesh.draw(ofGetFill()==OF_FILLED?OF_MESH_FILL:OF_MESH_WIREFRAME);
     ofPopMatrix();
     

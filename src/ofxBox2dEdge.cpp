@@ -42,8 +42,9 @@ void ofxBox2dEdge::create(b2World * b2dworld) {
 	bd.type			= density <= 0.0 ? b2_staticBody : b2_dynamicBody;
 	body			= b2dworld->CreateBody(&bd);
     
-    vector<ofPoint>&pts = ofPolyline::getVertices();
-	for(int i=1; i<(int)size(); i++) {
+    vector<ofDefaultVertexType>&pts = ofPolyline::getVertices();
+
+    for(int i=1; i<(int)size(); i++) {
         b2EdgeShape edge;
         edge.Set(screenPtToWorldPt(pts[i-1]), screenPtToWorldPt(pts[i]));
         body->CreateFixture(&edge, density);
@@ -81,7 +82,7 @@ void ofxBox2dEdge::addVertexes(ofPolyline &polyline) {
 //----------------------------------------
 void ofxBox2dEdge::updateShape() {
     if(body==NULL) return;
-    const b2Transform& xf = body->GetTransform();
+    // const b2Transform& xf = body->GetTransform();
     ofPolyline::clear();
     mesh.clear();
     mesh.setUsage(body->GetType()==b2_staticBody?GL_STATIC_DRAW:GL_DYNAMIC_DRAW);
@@ -91,8 +92,8 @@ void ofxBox2dEdge::updateShape() {
         b2EdgeShape * edge = (b2EdgeShape*)f->GetShape();
         
         if(edge) {
-            ofPolyline::addVertex(worldPtToscreenPt(edge->m_vertex2));
-            ofPolyline::addVertex(worldPtToscreenPt(edge->m_vertex1));
+            ofPolyline::addVertex(glm::vec3(worldPtToscreenPt(edge->m_vertex2), 0.f));
+            ofPolyline::addVertex(glm::vec3(worldPtToscreenPt(edge->m_vertex1), 0.f));
             
             mesh.addVertex(ofVec3f(worldPtToscreenPt(edge->m_vertex2)));
             mesh.addVertex(ofVec3f(worldPtToscreenPt(edge->m_vertex1)));
@@ -110,7 +111,8 @@ void ofxBox2dEdge::draw() {
 	if(!bFlagShapeUpdate && body->GetType() != b2_staticBody) {
         printf("Need to update shape first\n");
     }
-    mesh.draw(OF_MESH_WIREFRAME);
+    // Temporary fix until we switch to OF 0.8.0.
+    mesh.draw();
     //ofPolyline::draw();
     bFlagShapeUpdate = false;
 }

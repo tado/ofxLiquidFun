@@ -9,6 +9,7 @@
 
 ofxBox2dParticleSystem::ofxBox2dParticleSystem(){
     flag = b2_waterParticle;
+    groupFlag = (b2ParticleGroupFlag)0;
 }
 
 void ofxBox2dParticleSystem::setup(b2World * _b2world){
@@ -45,7 +46,7 @@ void ofxBox2dParticleSystem::draw(){
     mesh.setMode(OF_PRIMITIVE_POINTS);
     
     for (int i = 0; i < particleCount; i++) {
-        mesh.addVertex(ofVec2f(positnon[i].x, positnon[i].y));
+        mesh.addVertex(glm::vec3(positnon[i].x, positnon[i].y, 0.f));
         mesh.addColor(ofFloatColor(particleColor[i].r / 255.0, particleColor[i].g / 255.0, particleColor[i].b / 255.0));
     }
     
@@ -55,9 +56,9 @@ void ofxBox2dParticleSystem::draw(){
     ofScale(OFX_BOX2D_SCALE, OFX_BOX2D_SCALE);
     glPointSize(particleSize);
     if (useTexture) {
-        textureImage.getTextureReference().bind();
+        textureImage.bind();
         mesh.drawFaces();
-        textureImage.getTextureReference().unbind();
+        textureImage.unbind();
     } else {
         mesh.draw();
     }
@@ -92,39 +93,41 @@ void ofxBox2dParticleSystem::applyForce( int32 particle_index, float force_x, fl
   particleSystem->ParticleApplyForce( particle_index, b2Vec2( force_x, force_y ) );
 }
 
-void ofxBox2dParticleSystem::createRectParticleGroup(ofVec2f position, ofVec2f size, ofColor color){
+b2ParticleGroup* ofxBox2dParticleSystem::createRectParticleGroup(ofVec2f position, ofVec2f size, ofColor color){
     b2PolygonShape rect;
     rect.SetAsBox(size.x / OFX_BOX2D_SCALE, size.y / OFX_BOX2D_SCALE);
     
     b2ParticleGroupDef pgd;
     pgd.flags = flag;
+    pgd.groupFlags = groupFlag;
     pgd.position = b2Vec2(position.x / OFX_BOX2D_SCALE, position.y / OFX_BOX2D_SCALE);
     pgd.shape = &rect;
     pgd.color = b2ParticleColor(color.r, color.g, color.b, color.a);
     if (lifetime > 0.0) {
         pgd.lifetime = lifetime;
     }
-    particleSystem->CreateParticleGroup(pgd);
+    return particleSystem->CreateParticleGroup(pgd);
 }
 
-void ofxBox2dParticleSystem::createCircleParticleGroup(ofVec2f position, float radius, ofColor color){
+b2ParticleGroup* ofxBox2dParticleSystem::createCircleParticleGroup(ofVec2f position, float radius, ofColor color){
     b2CircleShape circle;
     circle.m_radius = radius / OFX_BOX2D_SCALE;
     
     b2ParticleGroupDef pgd;
     pgd.flags = flag;
+    pgd.groupFlags = groupFlag;
     pgd.position = b2Vec2(position.x / OFX_BOX2D_SCALE, position.y / OFX_BOX2D_SCALE);
     pgd.shape = &circle;
     pgd.color = b2ParticleColor(color.r, color.g, color.b, color.a);
     if (lifetime > 0.0) {
         pgd.lifetime = lifetime;
     }
-    particleSystem->CreateParticleGroup(pgd);
+    return particleSystem->CreateParticleGroup(pgd);
 }
 
 void ofxBox2dParticleSystem::loadImage(string filename){
     ofDisableArbTex();
-    textureImage.loadImage(filename);
+    textureImage.load(filename);
     useTexture = true;
 }
 
@@ -145,6 +148,9 @@ void ofxBox2dParticleSystem::setParticleFlag(b2ParticleFlag _flag){
     flag = _flag;
 }
 
+void ofxBox2dParticleSystem::setParticleGroupFlag(b2ParticleGroupFlag _groupFlag){
+    groupFlag = _groupFlag;
+}
 
 int ofxBox2dParticleSystem::getParticleCount(){
     return particleSystem->GetParticleCount();

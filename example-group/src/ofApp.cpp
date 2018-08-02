@@ -15,6 +15,7 @@ void ofApp::setup() {
     
     particles.setup(box2d.getWorld(), 3000);
     particles.setParticleFlag(b2_elasticParticle);
+    particles.setParticleGroupFlag(b2_solidParticleGroup);
 }
 
 //--------------------------------------------------------------

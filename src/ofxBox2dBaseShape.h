@@ -7,16 +7,7 @@
 class ofxBox2dBaseShape {
 	
 public:
-	b2FixtureDef	fixture;
-	b2BodyDef		bodyDef;
-	b2Body*			body;
-	
-	bool			alive;
-	bool			setMassFromShape;
-	
-	float			density;
-	float			bounce;
-	float			friction;
+
 	ofxBox2dBaseShape();	
 	
 	//----------------------------------------
@@ -33,6 +24,9 @@ public:
     
 	//----------------------------------------
 	b2World* getWorld();
+    
+    //----------------------------------------
+    b2Body* getBody();
 	
 	//----------------------------------------
 	virtual void create();
@@ -48,7 +42,10 @@ public:
 	
 	//------------------------------------------------ 
 	virtual void setPhysics(float density, float bounce, float friction);
-	
+
+    //------------------------------------------------
+    void setBodyType(b2BodyType bodyType);
+    b2BodyType getBodyType() const { return bodyDef.type; }
 
 	//------------------------------------------------ 
 	void* setData(void*data);
@@ -70,32 +67,29 @@ public:
 	
 	//------------------------------------------------ 
 	virtual void setPosition(float x, float y);
-	virtual void setPosition(ofVec2f p);
+	virtual void setPosition(glm::vec2 p);
 	
 	//------------------------------------------------ 
-	ofVec2f getPosition();
-	ofVec2f getB2DPosition();
-	
-	
+	glm::vec2 getPosition();
+	glm::vec2 getB2DPosition();
+
 	//------------------------------------------------ 
 	virtual void setVelocity(float x, float y);
-	virtual void setVelocity(ofVec2f p);
-	ofVec2f getVelocity();
+	virtual void setVelocity(glm::vec2 p);
+	glm::vec2 getVelocity();
 	
 	//------------------------------------------------ 
 	virtual void setDamping(float f);
 	virtual void setDamping(float fx, float fy);
-	
-	
+
+	//------------------------------------------------
+	virtual void addForce(glm::vec2 frc, float scale);
 	
 	//------------------------------------------------
-	virtual void addForce(ofVec2f frc, float scale);
+	virtual void addImpulseForce(glm::vec2 pt, glm::vec2 amt);
 	
 	//------------------------------------------------
-	virtual void addImpulseForce(ofVec2f pt, ofVec2f amt);
-	
-	//------------------------------------------------
-	virtual void addRepulsionForce(ofVec2f pt, float radius, float amt);
+	virtual void addRepulsionForce(glm::vec2 pt, float radius, float amt);
 	
 	//------------------------------------------------
 	virtual void destroy();
@@ -103,7 +97,19 @@ public:
 	//------------------------------------------------
 	virtual void update();
 	virtual void draw();
-	
+
+protected:
+    b2FixtureDef	fixture;
+    b2BodyDef		bodyDef;
+    b2Body*			body;
+    bool            bodyTypeSet;
+
+    bool			alive;
+    bool			setMassFromShape;
+
+    float			density;
+    float			bounce;
+    float			friction;
 };
 
 

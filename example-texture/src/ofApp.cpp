@@ -13,6 +13,7 @@ void ofApp::setup() {
     
     ofColor color;
     color.set(255);
+    //particles.particleSystemDef.
     particles.setParticleFlag(b2_tensileParticle);
     particles.loadImage("particle32.png");
     particles.setup(box2d.getWorld(), 20000, 60.0, 6.0, 42.0, color);

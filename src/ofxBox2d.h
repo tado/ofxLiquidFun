@@ -10,6 +10,8 @@
 #include "ofxBox2dRect.h"
 
 #include "ofxBox2dJoint.h"
+#include "ofxBox2dWeldJoint.h"
+#include "ofxBox2dRevoluteJoint.h"
 #include "ofxBox2dRender.h"
 #include "ofxBox2dContactListener.h"
 
