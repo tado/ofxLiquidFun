@@ -9,12 +9,19 @@ openFrameworks wrapper for [LiquidFun](http://google.github.io/liquidfun/) by Go
 
 https://vimeo.com/104151359
 
-# Todo
+## Installation
+
+First, pick the branch that matches your version of openFrameworks: 
+
+- openFrameworks 0.9.8 : [0.9.8](https://github.com/tado/ofxLiquidFun/tree/0.9.8) branch
+- openFrameworks 0.10.0 : [master](https://github.com/tado/ofxLiquidFun/tree/master) branch
+
+## Todo
 
 - Add PerticleGroup class (ofxBox2dParticleGroup?)
 - Separate LiquidFun class from ofxBox2d.
 - ...etc.
 
-# License
+## License
 
 The MIT License (MIT)
